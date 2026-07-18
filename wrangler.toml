@@ -1,0 +1,10 @@
+name = "carolinagarcia-site"
+compatibility_date = "2026-07-18"
+main = "src/worker.js"
+
+[assets]
+binding = "ASSETS"
+directory = "."
+
+[env.production]
+name = "carolinagarcia-site"

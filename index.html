@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carolina García Berguecio · Resiliencia + Inclusión + Liderazgo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a2c8c;          /* deep navy/blue principal */
+    --navy-dark:#0f1a5c;
+    --navy-darker:#08123d;
+    --purple:#7d4cdb;        /* accent principal */
+    --purple-light:#9c6fff;
+    --cyan:#15e0fb;          /* accent para "+" decorativos */
+    --orange:#ea492e;        /* accent secundario */
+    --gold:#c7a86c;          /* dorado sutil */
+    --black:#0a0a0a;
+    --bg:#ffffff;
+    --bg-soft:#f5f5f5;
+    --text:#1a1a1a;
+    --text-dim:#5a5a5a;
+    --line:rgba(0,0,0,0.08);
+    --max:1320px;
+    --pad:clamp(20px,4vw,60px);
+    --font:'Poppins',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  /* ───────── NAV ───────── */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:18px var(--pad);
+    transition:background .3s, padding .3s;
+  }
+  header.scrolled{background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
+  .nav{
+    max-width:var(--max);
+    margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:14px;
+    color:#fff;
+  }
+  header.scrolled .logo{color:var(--navy)}
+  .logo-mark{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--purple);
+    display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:18px;
+    flex-shrink:0;
+    border:2px solid var(--purple-light);
+  }
+  .logo-text{display:flex;flex-direction:column;line-height:1.1}
+  .logo-text .l1{font-weight:600;font-size:16px;letter-spacing:-.01em}
+  .logo-text .l2{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;font-weight:500}
+  nav.menu{
+    display:flex;align-items:center;gap:34px;
+    color:#fff;font-size:14px;font-weight:500;
+  }
+  header.scrolled nav.menu{color:var(--text)}
+  nav.menu a{position:relative;padding:6px 0;transition:opacity .2s}
+  nav.menu a:hover{opacity:.7}
+  nav.menu a::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+    background:var(--cyan);transform:scaleX(0);transform-origin:left;
+    transition:transform .3s;
+  }
+  nav.menu a:hover::after{transform:scaleX(1)}
+  .lang-btn{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 14px;border-radius:100px;
+    border:1px solid rgba(255,255,255,0.4);
+    background:rgba(0,0,0,0.2);
+    color:#fff;font-size:13px;font-weight:500;
+    cursor:pointer;transition:all .2s;
+  }
+  header.scrolled .lang-btn{border-color:var(--line);background:#fff;color:var(--text)}
+  .lang-btn:hover{background:rgba(255,255,255,0.15)}
+  .flag{width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#0033a0 50%,#fff 50%);display:inline-block;flex-shrink:0}
+  @media(max-width:900px){
+    nav.menu{display:none}
+  }
+
+  /* ───────── HERO ───────── */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    overflow:hidden;
+    background:#000;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+  }
+  .hero-bg img{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(.55);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,.6) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:var(--max);
+    margin:0 auto;
+    padding:140px var(--pad) 80px;
+    width:100%;
+  }
+  .hero-pretitle{
+    display:inline-block;
+    color:var(--cyan);
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+    margin-bottom:24px;
+    padding-bottom:6px;
+    border-bottom:2px solid var(--cyan);
+  }
+  h1.hero-title{
+    color:#fff;
+    font-weight:700;
+    font-size:clamp(40px,7vw,84px);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    max-width:14ch;
+    margin-bottom:48px;
+  }
+  h1.hero-title .plus{
+    color:var(--cyan);
+    font-weight:300;
+    margin:0 8px;
+    display:inline-block;
+    transform:translateY(-.05em);
+  }
+  h1.hero-title .accent{color:var(--purple-light)}
+  .hero-intro{
+    display:grid;grid-template-columns:200px 1fr 280px;gap:48px;align-items:start;
+    color:#fff;
+    max-width:1100px;
+  }
+  .hero-portrait{
+    width:200px;height:200px;border-radius:50%;overflow:hidden;
+    border:4px solid var(--purple-light);
+    box-shadow:0 8px 40px rgba(0,0,0,.5);
+    flex-shrink:0;
+  }
+  .hero-portrait img{width:100%;height:100%;object-fit:cover}
+  .hero-bio h3{
+    font-size:20px;font-weight:600;margin-bottom:8px;color:var(--cyan);letter-spacing:.04em;
+  }
+  .hero-bio p{
+    font-size:15px;line-height:1.6;opacity:.92;font-weight:300;
+  }
+  .hero-aside{
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:14px;
+    padding:24px;
+    color:#fff;
+  }
+  .hero-aside h4{
+    font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:14px;
+  }
+  .hero-aside ul{list-style:none}
+  .hero-aside li{
+    font-size:13px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);
+    line-height:1.4;
+  }
+  .hero-aside li:last-child{border-bottom:none}
+  .hero-aside li b{color:var(--gold);font-weight:600}
+  @media(max-width:900px){
+    .hero-intro{grid-template-columns:1fr;gap:32px}
+    .hero-portrait{margin:0 auto}
+  }
+
+  /* ───────── LIBROS / PREMIOS ───────── */
+  .awards{
+    background:var(--navy);
+    color:#fff;
+    padding:80px var(--pad);
+  }
+  .awards-inner{max-width:var(--max);margin:0 auto}
+  .awards-head{
+    text-align:center;margin-bottom:48px;
+  }
+  .awards-head .lbl{
+    color:var(--cyan);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+    margin-bottom:12px;
+  }
+  .awards-head h2{
+    font-size:clamp(28px,4vw,44px);font-weight:600;letter-spacing:-.01em;
+  }
+  .awards-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  @media(max-width:900px){.awards-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.awards-grid{grid-template-columns:1fr}}
+  .award-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px;
+    padding:28px;
+    text-align:center;
+    transition:transform .3s, background .3s;
+  }
+  .award-card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.08)}
+  .award-icon{
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,var(--purple),var(--cyan));
+    display:grid;place-items:center;margin:0 auto 18px;
+    color:#fff;font-size:24px;font-weight:700;
+  }
+  .award-card h4{font-size:15px;font-weight:600;margin-bottom:6px;color:#fff}
+  .award-card p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5}
+
+  /* ───────── SERVICIOS / SERVICIOS ───────── */
+  .services{padding:0;background:var(--bg-soft)}
+  .service-block{
+    background:#fff;
+    display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
+    min-height:480px;
+  }
+  .service-block:nth-child(even){direction:rtl}
+  .service-block:nth-child(even) > *{direction:ltr}
+  @media(max-width:900px){
+    .service-block{grid-template-columns:1fr;min-height:0}
+    .service-block:nth-child(even){direction:ltr}
+  }
+  .service-img{
+    background:#000;position:relative;overflow:hidden;min-height:380px;
+  }
+  .service-img img{
+    width:100%;height:100%;object-fit:cover;opacity:.85;
+    transition:transform .8s, opacity .3s;
+  }
+  .service-block:hover .service-img img{transform:scale(1.04);opacity:.95}
+  .service-content{
+    padding:clamp(40px,6vw,80px);
+    display:flex;flex-direction:column;justify-content:center;
+    background:#0a0a0a;color:#fff;
+  }
+  .service-content .s-lbl{
+    color:var(--cyan);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+    margin-bottom:20px;
+  }
+  .service-content h3{
+    font-size:clamp(28px,4vw,48px);font-weight:600;color:#fff;
+    letter-spacing:-.02em;line-height:1.05;margin-bottom:24px;
+  }
+  .service-content ul{
+    list-style:none;margin-bottom:32px;
+  }
+  .service-content li{
+    padding:10px 0;font-size:15px;color:rgba(255,255,255,0.85);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .service-content li:last-child{border-bottom:none}
+  .leer-mas{
+    color:var(--cyan);font-weight:600;font-size:14px;letter-spacing:.04em;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:gap .2s;
+  }
+  .leer-mas:hover{gap:14px}
+
+  /* ───────── STATS / NUMBERS ───────── */
+  .stats{
+    background:linear-gradient(135deg,#0a0a0a 0%,var(--navy-darker) 100%);
+    padding:100px var(--pad);color:#fff;position:relative;overflow:hidden;
+  }
+  .stats::before{
+    content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;
+    background:radial-gradient(circle,rgba(125,76,219,0.3) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .stats-inner{
+    max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+    position:relative;
+  }
+  @media(max-width:900px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:500px){.stats-inner{grid-template-columns:1fr}}
+  .stat{
+    text-align:center;padding:24px;
+    border-right:1px solid rgba(255,255,255,0.1);
+  }
+  .stat:last-child{border-right:none}
+  @media(max-width:900px){.stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}}
+  .stat .num{
+    font-size:clamp(40px,5vw,64px);font-weight:700;color:var(--cyan);
+    letter-spacing:-.02em;line-height:1;
+  }
+  .stat .num .plus{font-size:0.5em;color:var(--purple-light);vertical-align:top;margin-left:4px;font-weight:400}
+  .stat .lbl{
+    font-size:14px;color:rgba(255,255,255,0.85);margin-top:12px;font-weight:400;
+    letter-spacing:.02em;
+  }
+
+  /* ───────── TALLERES / TAGS ───────── */
+  .topics{padding:100px var(--pad);background:#fff}
+  .topics-inner{max-width:var(--max);margin:0 auto;text-align:center}
+  .topics .lbl{
+    color:var(--purple);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+    margin-bottom:12px;
+  }
+  .topics h2{
+    font-size:clamp(32px,4vw,52px);font-weight:600;color:var(--navy);
+    letter-spacing:-.02em;line-height:1.1;max-width:20ch;margin:0 auto 48px;
+  }
+  .topics-grid{
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
+  }
+  .topic{
+    padding:14px 26px;border-radius:100px;
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    font-size:15px;font-weight:500;color:var(--text);
+    transition:all .25s;cursor:pointer;
+  }
+  .topic:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-2px)}
+
+  /* ───────── NEWSLETTER / CONTACT ───────── */
+  .newsletter{
+    background:var(--navy);
+    padding:100px var(--pad);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .newsletter::before{
+    content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:140%;height:200%;
+    background:radial-gradient(circle,rgba(125,76,219,0.25) 0%,transparent 50%);
+    pointer-events:none;
+  }
+  .newsletter-inner{
+    max-width:1100px;margin:0 auto;
+    background:#fff;color:var(--text);
+    border-radius:18px;
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    overflow:hidden;
+    position:relative;
+    z-index:1;
+  }
+  @media(max-width:900px){.newsletter-inner{grid-template-columns:1fr}}
+  .nl-content{padding:clamp(32px,5vw,64px)}
+  .nl-content h2{
+    font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--navy);
+    letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;
+  }
+  .nl-content p{
+    font-size:15px;color:var(--text-dim);margin-bottom:32px;line-height:1.6;
+  }
+  .nl-form{display:flex;flex-direction:column;gap:14px}
+  .nl-form label{font-size:13px;font-weight:500;color:var(--text);display:flex;flex-direction:column;gap:6px}
+  .nl-form input{
+    padding:14px 16px;border:none;border-bottom:1.5px solid var(--text);
+    background:transparent;font-family:inherit;font-size:15px;color:var(--text);
+    transition:border-color .2s;
+  }
+  .nl-form input:focus{outline:none;border-color:var(--purple)}
+  .nl-form input::placeholder{color:#aaa;font-style:italic}
+  .nl-form button{
+    padding:14px 24px;border:none;
+    background:#fff;color:var(--text);font-family:inherit;
+    border:1.5px solid var(--text);border-radius:6px;
+    font-size:14px;font-weight:600;cursor:pointer;
+    transition:all .2s;letter-spacing:.02em;
+    margin-top:8px;
+  }
+  .nl-form button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .nl-img{background:#000;position:relative;min-height:380px}
+  .nl-img img{width:100%;height:100%;object-fit:cover}
+
+  /* ───────── FOOTER ───────── */
+  footer{
+    background:#000;color:#fff;
+    padding:60px var(--pad) 30px;
+  }
+  .footer-inner{
+    max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;
+    margin-bottom:48px;
+  }
+  @media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.footer-inner{grid-template-columns:1fr}}
+  .footer-brand .logo{color:#fff;margin-bottom:20px}
+  .footer-brand p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;max-width:36ch}
+  .footer-col h5{
+    font-size:13px;font-weight:600;color:#fff;letter-spacing:.08em;
+    text-transform:uppercase;margin-bottom:18px;
+  }
+  .footer-col ul{list-style:none}
+  .footer-col li{margin-bottom:10px;font-size:14px;color:rgba(255,255,255,0.7)}
+  .footer-col li a{transition:color .2s}
+  .footer-col li a:hover{color:var(--cyan)}
+  .footer-bottom{
+    max-width:var(--max);margin:0 auto;
+    padding-top:30px;border-top:1px solid rgba(255,255,255,0.1);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    font-size:13px;color:rgba(255,255,255,0.5);
+  }
+
+  /* ───────── UTIL ───────── */
+  .section-tag{
+    display:inline-block;
+    color:var(--purple);
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+    padding:6px 14px;
+    border:1px solid var(--purple);
+    border-radius:100px;
+    margin-bottom:24px;
+  }
+  .whatsapp-float{
+    position:fixed;bottom:24px;right:24px;z-index:99;
+    width:56px;height:56px;border-radius:50%;
+    background:#25d366;color:#fff;
+    display:grid;place-items:center;
+    box-shadow:0 8px 24px rgba(37,211,102,.4);
+    transition:transform .2s;
+  }
+  .whatsapp-float:hover{transform:scale(1.08)}
+  .whatsapp-float svg{width:30px;height:30px;fill:#fff}
+
+  /* Smooth scroll reveal */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s, transform .8s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ───────── HEADER ───────── -->
+<header id="header">
+  <div class="nav">
+    <a class="logo" href="#">
+      <div class="logo-mark">CB</div>
+      <div class="logo-text">
+        <span class="l1">Carolina García B.</span>
+        <span class="l2">Coach & Speaker</span>
+      </div>
+    </a>
+    <nav class="menu">
+      <a href="#conferencias">Conferencias</a>
+      <a href="#programas">Programas</a>
+      <a href="#coaching">Coaching</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="lang-btn"><span class="flag"></span> ES · CL</button>
+  </div>
+</header>
+
+<!-- ───────── HERO ───────── -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="assets/hero-bg.jpg" alt="Carolina García Berguecio">
+  </div>
+  <div class="hero-content">
+    <span class="hero-pretitle">Carolina García Berguecio</span>
+    <h1 class="hero-title">
+      Resiliencia <span class="plus">+</span> Inclusión <span class="plus">+</span> <span class="accent">Propósito</span>
+    </h1>
+    <div class="hero-intro">
+      <div class="hero-portrait">
+        <img src="assets/carolina-2.jpg" alt="Carolina García">
+      </div>
+      <div class="hero-bio">
+        <h3>Bienvenid@</h3>
+        <p>Soy Carolina García Berguecio. Speaker, coach y fundadora de <b style="color:var(--gold)">Entrevitas</b>. Acompaño a empresas y personas a transformar la adversidad en decisiones con sentido, desde la convicción de que la inclusión no es un gesto, es una estrategia.</p>
+      </div>
+      <div class="hero-aside">
+        <h4>2025 · Reconocimientos</h4>
+        <ul>
+          <li><b>Speaker principal</b><br>"Mujer & Minería 2025"</li>
+          <li><b>Premio Fundación Minera</b><br>Categoría Líder Minera</li>
+          <li><b>Top 3 LinkedIn Female</b><br>Chile · Favikon</li>
+          <li><b>John Mattone Team</b><br>Coach 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── AWARDS ───────── -->
+<section class="awards">
+  <div class="awards-inner">
+    <div class="awards-head">
+      <div class="lbl">Prensa & Reconocimientos</div>
+      <h2>Lo que dicen y escriben sobre Carolina</h2>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <div class="award-icon">★</div>
+        <h4>Mujer & Minería 2025</h4>
+        <p>Speaker principal de la cena anual más importante del sector minero chileno.</p>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon">◆</div>
+        <h4>Summit DEI 2025</h4>
+        <p>Principal Learning en el summit de diversidad, equidad e inclusión de Chile.</p>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon">▲</div>
+        <h4>Premio Fundación Minera</h4>
+        <p>Categoría Líder Minera 2025 — reconociendo su aporte al sector.</p>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon">●</div>
+        <h4>Top 3 LinkedIn Chile</h4>
+        <p>Número 3 LinkedIn Female de Chile según Favikon y Jeremy Boissinot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SERVICIOS ───────── -->
+<section id="conferencias" class="services">
+  <div class="service-block">
+    <div class="service-img">
+      <img src="assets/carolina-1.jpeg" alt="Conferencias">
+    </div>
+    <div class="service-content">
+      <div class="s-lbl">Pilar 01 · Conferencias</div>
+      <h3>Conferencias que<br>mueven a la acción</h3>
+      <ul>
+        <li>Resiliencia y discapacidad</li>
+        <li>Inclusión y discapacidad en la empresa</li>
+        <li>Liderazgo con propósito</li>
+        <li>Motivación para equipos en crisis</li>
+      </ul>
+      <a href="#contacto" class="leer-mas">Leer más →</a>
+    </div>
+  </div>
+
+  <div id="programas" class="service-block">
+    <div class="service-img">
+      <img src="assets/carolina-3.png" alt="Programas corporativos">
+    </div>
+    <div class="service-content">
+      <div class="s-lbl">Pilar 02 · Programas corporativos</div>
+      <h3>Cambio organizacional<br>que se mide</h3>
+      <ul>
+        <li>Diagnóstico de cultura inclusiva</li>
+        <li>Programa de bienestar y resiliencia · 12 semanas</li>
+        <li>Talleres para equipos</li>
+        <li>Mentoría de liderazgo femenino</li>
+      </ul>
+      <a href="#contacto" class="leer-mas">Leer más →</a>
+    </div>
+  </div>
+
+  <div id="coaching" class="service-block">
+    <div class="service-img">
+      <img src="assets/carolina-2.jpg" alt="Coaching 1:1">
+    </div>
+    <div class="service-content">
+      <div class="s-lbl">Pilar 03 · Coaching 1:1</div>
+      <h3>Coaching, mentoring<br>y promoción</h3>
+      <ul>
+        <li>Coaching ejecutivo y personal</li>
+        <li>Mentoría para emprendedores con discapacidad</li>
+        <li>Promoción de iniciativas de impacto social</li>
+        <li>Programa para fundadoras y líderes</li>
+      </ul>
+      <a href="#contacto" class="leer-mas">Leer más →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── STATS ───────── -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <div class="num">15<span class="plus">+</span></div>
+      <div class="lbl">Años de experiencia</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num">200<span class="plus">+</span></div>
+      <div class="lbl">Conferencias dictadas</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num">40<span class="plus">+</span></div>
+      <div class="lbl">Empresas acompañadas</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num">3</div>
+      <div class="lbl">Premios y reconocimientos 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── TOPICS ───────── -->
+<section class="topics">
+  <div class="topics-inner">
+    <div class="lbl">Temas que trabaja</div>
+    <h2>De la resiliencia personal a la estrategia corporativa</h2>
+    <div class="topics-grid">
+      <div class="topic">Resiliencia</div>
+      <div class="topic">Discapacidad e inclusión</div>
+      <div class="topic">Cambio organizacional</div>
+      <div class="topic">Liderazgo con propósito</div>
+      <div class="topic">Equidad de género</div>
+      <div class="topic">Emprendimiento</div>
+      <div class="topic">Diversidad y DEI</div>
+      <div class="topic">Motivación de equipos</div>
+      <div class="topic">Bienestar corporativo</div>
+      <div class="topic">Marca personal</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PODCAST ───────── -->
+<section id="podcast" class="service-block" style="background:var(--navy);color:#fff">
+  <div class="service-img">
+    <img src="assets/carolina-1.jpeg" alt="Podcast Tu Huella">
+  </div>
+  <div class="service-content" style="background:var(--navy)">
+    <div class="s-lbl">Podcast · Tu Huella</div>
+    <h3>Conversaciones que<br>dejan marca</h3>
+    <ul>
+      <li>Episodios quincenales sobre resiliencia</li>
+      <li>Historias reales de personas con discapacidad</li>
+      <li>Disponible en Spotify y Apple Podcasts</li>
+      <li>Más de 30 episodios publicados</li>
+    </ul>
+    <a href="#" class="leer-mas">Escuchar ahora →</a>
+  </div>
+</section>
+
+<!-- ───────── NEWSLETTER / CONTACTO ───────── -->
+<section id="contacto" class="newsletter">
+  <div class="newsletter-inner">
+    <div class="nl-content">
+      <h2>Hablemos de tu<br>próximo paso.</h2>
+      <p>¿Quieres llevar a Carolina a tu evento, diseñar un programa para tu equipo, o iniciar un proceso de coaching? Escríbeme y te respondo en menos de 24 horas.</p>
+      <form class="nl-form" onsubmit="event.preventDefault(); alert('Mensaje enviado. Gracias!')">
+        <label>
+          Nombre completo
+          <input type="text" placeholder="Tu nombre" required>
+        </label>
+        <label>
+          Email de contacto
+          <input type="email" placeholder="tu@email.com" required>
+        </label>
+        <label>
+          Cuéntame qué necesitas
+          <input type="text" placeholder="Conferencia, programa, coaching..." required>
+        </label>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+    <div class="nl-img">
+      <img src="assets/carolina-3.png" alt="Carolina García">
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="#">
+        <div class="logo-mark">CB</div>
+        <div class="logo-text">
+          <span class="l1">Carolina García B.</span>
+          <span class="l2">Coach & Speaker</span>
+        </div>
+      </a>
+      <p>Speaker, coach y fundadora de Entrevitas. Acompaño a empresas y personas a convertir la adversidad en decisiones con sentido.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#conferencias">Conferencias</a></li>
+        <li><a href="#programas">Programas corporativos</a></li>
+        <li><a href="#coaching">Coaching 1:1</a></li>
+        <li><a href="#podcast">Podcast Tu Huella</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="mailto:contacto@carolina-garcia.com">contacto@carolina-garcia.com</a></li>
+        <li><a href="mailto:carolina@comunidadinclusiva.cl">carolina@comunidadinclusiva.cl</a></li>
+        <li><a href="tel:+56992380039">+56 9 9238 0039</a></li>
+        <li>LinkedIn · Carolina García Berguecio</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Sitio</h5>
+      <ul>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Prensa</a></li>
+        <li><a href="#">Reconocimientos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Carolina García Berguecio</div>
+    <div>Sitio desarrollado por Mavis</div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/56992380039" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, { threshold: 0.15 });
+  reveals.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
