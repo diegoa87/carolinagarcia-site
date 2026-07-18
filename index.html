@@ -358,11 +358,11 @@
     position:relative;
     z-index:1;
   }
-  @media(max-width:900px){.newsletter-inner{grid-template-columns:1fr}}
+  @media(max-width:900px){.newsletter-inner{grid-template-columns:1fr;overflow:visible}.newsletter-inner h2{font-size:26px}}
   .nl-content{padding:clamp(32px,5vw,64px)}
   .nl-content h2{
     font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--navy);
-    letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;
+    letter-spacing:-.02em;line-height:1.2;margin-bottom:16px;
   }
   .nl-content p{
     font-size:15px;color:var(--text-dim);margin-bottom:32px;line-height:1.6;
@@ -647,7 +647,7 @@
 <section id="contacto" class="newsletter">
   <div class="newsletter-inner">
     <div class="nl-content">
-      <h2>Hablemos de tu<br>próximo paso.</h2>
+      <h2>Hablemos de tu próximo paso.</h2>
       <p>¿Quieres llevar a Carolina a tu evento, diseñar un programa para tu equipo, o iniciar un proceso de coaching? Escríbeme y te respondo en menos de 24 horas.</p>
       <form class="nl-form" onsubmit="event.preventDefault(); alert('Mensaje enviado. Gracias!')">
         <label>
